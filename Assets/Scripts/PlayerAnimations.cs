@@ -53,7 +53,7 @@ public class PlayerAnimations : MonoBehaviour
 		anim.SetBool(hangingParamID, movement.isHanging);
 		anim.SetBool(groundParamID, movement.isOnGround);
 		anim.SetBool(crouchParamID, movement.isCrouching);
-		anim.SetFloat(fallParamID, rigidBody.velocity.y);
+		anim.SetFloat(fallParamID, rigidBody.linearVelocity.y);
 
 		//Use the absolute value of speed so that we only pass in positive numbers
 		anim.SetFloat(speedParamID, Mathf.Abs(input.horizontal));
