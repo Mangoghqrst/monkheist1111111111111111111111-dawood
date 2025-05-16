@@ -117,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
 		//If the player is off the ground AND is not hanging AND is falling AND
 		//found a ledge AND found a wall AND the grab is NOT blocked...
-		if (!isOnGround && !isHanging && rigidBody.velocity.y < 0f && 
+		if (!isOnGround && !isHanging && rigidBody.linearVelocity.y < 0f && 
 			ledgeCheck && wallCheck && !blockedCheck)
 		{ 
 			//...we have a ledge grab. Record the current position...
@@ -163,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
 			xVelocity /= crouchSpeedDivisor;
 
 		//Apply the desired velocity 
-		rigidBody.velocity = new Vector2(xVelocity, rigidBody.velocity.y);
+		rigidBody.linearVelocity = new Vector2(xVelocity, rigidBody.linearVelocity.y);
 
 		//If the player is on the ground, extend the coyote time window
 		if (isOnGround)
@@ -236,8 +236,8 @@ public class PlayerMovement : MonoBehaviour
 		}
 
 		//If player is falling to fast, reduce the Y velocity to the max
-		if (rigidBody.velocity.y < maxFallSpeed)
-			rigidBody.velocity = new Vector2(rigidBody.velocity.x, maxFallSpeed);
+		if (rigidBody.linearVelocity.y < maxFallSpeed)
+			rigidBody.linearVelocity = new Vector2(rigidBody.linearVelocity.x, maxFallSpeed);
 	}
 
 	void FlipCharacterDirection()
